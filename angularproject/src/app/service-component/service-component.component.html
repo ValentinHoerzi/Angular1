@@ -1,3 +1,9 @@
-<p>service-component works!</p>
-{{dateMessage}}
-{{addTwoNumbers(1,6)}}
+<div>
+  <h1>{{user.name}}</h1>
+  <h3>{{user.title}}</h3>
+  <p>{{user.address}}</p>
+  <div>
+    <p>Phone</p>
+    <p *ngFor="let phoneNumber of user.phone">{{phoneNumber}}</p>
+  </div>
+</div>

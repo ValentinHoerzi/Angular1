@@ -7,19 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceComponentComponent implements OnInit {
 
-  dateMessage : string;
+  user: any;
 
   constructor() {
-    setInterval(() => {
-      let currentDate = new Date();
-      this.dateMessage = currentDate.toDateString() + ' ' + currentDate.toLocaleTimeString();
-    }, 1000);}
+    this.user = {
+      name : 'Foo Bar',
+      title : 'Software Developer',
+      address : '1234 Main St. City, State, 100010',
+      phone: [
+          '123-456-678',
+          '123-456-678',
+          '123-456-678',
+          '123-456-678',
+          '123-456-678',
+          '123-456-678',
+          '123-456-678',
+          '123-456-678',
+      ]
+    };
+  }
 
   ngOnInit(): void {
-  }
 
-  addTwoNumbers(a : number,b : number){
-    return a+b;
   }
-
 }
