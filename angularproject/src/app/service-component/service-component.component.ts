@@ -15,14 +15,7 @@ export class ServiceComponentComponent implements OnInit {
       title : 'Software Developer',
       address : '1234 Main St. City, State, 100010',
       phone: [
-          '123-456-678',
-          '123-456-678',
-          '123-456-678',
-          '123-456-678',
-          '123-456-678',
-          '123-456-678',
-          '123-456-678',
-          '123-456-678',
+
       ]
     };
   }
