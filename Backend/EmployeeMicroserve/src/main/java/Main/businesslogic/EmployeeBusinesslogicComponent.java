@@ -6,17 +6,13 @@ import Main.database.EmployeeRepository;
 import Main.exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Component
 public class EmployeeBusinesslogicComponent {
 
     @Autowired
-    EmployeeRepository db;
+    private EmployeeRepository db;
 
     public List<Employee> getEmployees() {
         List<Employee> employees = new ArrayList<>();
@@ -27,8 +23,7 @@ public class EmployeeBusinesslogicComponent {
     }
 
     public Employee getEmployeeById(Integer id){
-        Optional<EmployeeEntity> employeeEntity = db.findById(id);
-        EmployeeEntity employee = employeeEntity.orElseThrow(() -> new EmployeeNotFoundException(String.format("Employee with id %d not found",id)));
+        EmployeeEntity employee = findEmployeeById(id);
         return convertEmployeeEntityToEmployee(employee);
     }
 
@@ -38,7 +33,23 @@ public class EmployeeBusinesslogicComponent {
         return convertEmployeeEntityToEmployee(saved);
     }
 
-    public Employee convertEmployeeEntityToEmployee(EmployeeEntity entity) {
+    public Employee updateEmployee(Integer id, Employee employee) {
+        EmployeeEntity updatedEmployee = createdUpdatedEmployee(id,employee);
+        EmployeeEntity save = db.save(updatedEmployee);
+        return convertEmployeeEntityToEmployee(save);
+    }
+
+    public String deleteEmployee(Integer id) {
+        EmployeeEntity employee = findEmployeeById(id);
+        db.deleteById(employee.getId());
+        return  employee.getName();
+    }
+
+    public EmployeeEntity findEmployeeById(Integer id){
+        return db.findById(id).orElseThrow(() -> new EmployeeNotFoundException(String.format("Employee with id %d not found",id)));
+    }
+
+    private Employee convertEmployeeEntityToEmployee(EmployeeEntity entity) {
         Employee employee = new Employee();
 
         employee.setId(entity.getId());
@@ -58,5 +69,16 @@ public class EmployeeBusinesslogicComponent {
         entity.setLatitude(employee.getLatitude());
 
         return entity;
+    }
+
+    private EmployeeEntity createdUpdatedEmployee(Integer id, Employee employee) {
+        EmployeeEntity updatedEmployee = new EmployeeEntity();
+
+        updatedEmployee.setId(id);
+        updatedEmployee.setName(employee.getName());
+        updatedEmployee.setLatitude(employee.getLatitude());
+        updatedEmployee.setLongitude(employee.getLongitude());
+
+        return updatedEmployee;
     }
 }

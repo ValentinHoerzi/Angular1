@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.EnumMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,12 +36,12 @@ public class EmployeeDataService {
         return convertEmployeeToEmployeeResource(result);
     }
 
-    public EmployeeResource editEmployee(Integer id, EmployeeDTO employeeDto) {
-        throw new NotImplementedException();//TODO
+    public EmployeeResource updateEmployee(Integer id, EmployeeDTO employeeDto) {
+        return convertEmployeeToEmployeeResource(_service.updateEmployee(id,convertEmployeeDTOtoEmployee(employeeDto)));
     }
 
-    public Integer deleteEmployee(Integer id) {
-        throw new NotImplementedException();//TODO
+    public String deleteEmployee(Integer id) {
+        return _service.deleteEmployee(id);
     }
 
     public EmployeeResource convertEmployeeToEmployeeResource(Employee employee) {

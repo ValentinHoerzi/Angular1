@@ -32,12 +32,12 @@ public class EmployeesController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/employees/{id}")
-    public EmployeeResource editEmployee(@PathVariable Integer id,@RequestBody EmployeeDTO employeeDto){
-        return _service.editEmployee(id,employeeDto);
+    public EmployeeResource updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDto){
+        return _service.updateEmployee(id,employeeDto);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/employees/{id}")
-    public Integer deleteEmployee(@PathVariable Integer id){
+    public String deleteEmployee(@PathVariable Integer id){
         return _service.deleteEmployee(id);
     }
 }
