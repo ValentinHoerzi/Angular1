@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-service-component',
@@ -6,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./service-component.component.css'],
 })
 export class ServiceComponentComponent implements OnInit {
-  user: any;
-  @Input('name') userName: string;
+  @Input('user') user: User;
 
   constructor() {
 
@@ -15,10 +15,10 @@ export class ServiceComponentComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = {
-      name: this.userName,
-      title: 'Software Developer',
-      address: '1234 Main St. City, State, 100010',
-      phone: [],
+      name: this.user.name,
+      designation: this.user.designation,
+      address: this.user.address,
+      phone: this.user.phone,
     };
   }
 }
