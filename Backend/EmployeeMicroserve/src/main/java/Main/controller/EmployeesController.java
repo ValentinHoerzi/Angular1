@@ -22,8 +22,8 @@ public class EmployeesController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/employees/{id}")
-    public EmployeeResource getEmployeeById(@PathVariable String id) {
-        return _service.getEmployeeById(Integer.valueOf(id));
+    public EmployeeResource getEmployeeById(@PathVariable Integer id) {
+        return _service.getEmployeeById(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/employees")
