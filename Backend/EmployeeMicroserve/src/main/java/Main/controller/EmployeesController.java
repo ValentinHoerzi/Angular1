@@ -21,8 +21,23 @@ public class EmployeesController {
         return _service.getEmployees();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/employees/{id}")
+    public EmployeeResource getEmployeeById(@PathVariable String id) {
+        return _service.getEmployeeById(Integer.valueOf(id));
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/employees")
     public EmployeeResource addEmployee(@RequestBody EmployeeDTO employeeDto) {
         return _service.addEmployee(employeeDto);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/employees/{id}")
+    public EmployeeResource editEmployee(@PathVariable Integer id,@RequestBody EmployeeDTO employeeDto){
+        return _service.editEmployee(id,employeeDto);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/employees/{id}")
+    public Integer deleteEmployee(@PathVariable Integer id){
+        return _service.deleteEmployee(id);
     }
 }

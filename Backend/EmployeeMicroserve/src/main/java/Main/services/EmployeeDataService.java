@@ -1,21 +1,22 @@
 package Main.services;
 
-import Main.Exceptions.EmployeeBadRequestException;
-import Main.businesslogic.EmployeesLogic;
+import Main.businesslogic.EmployeeBusinesslogicComponent;
 import Main.data.Employee;
 import Main.data.EmployeeDTO;
 import Main.data.EmployeeResource;
+import Main.exceptions.EmployeeBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class EmployeeDataService {
 
     @Autowired
-    private EmployeesLogic _service;
+    private EmployeeBusinesslogicComponent _service;
 
     public List<EmployeeResource> getEmployees() {
         return _service.getEmployees()
@@ -24,10 +25,22 @@ public class EmployeeDataService {
                 .collect(Collectors.toList());
     }
 
+    public EmployeeResource getEmployeeById(Integer id) {
+        return convertEmployeeToEmployeeResource(_service.getEmployeeById(id));
+    }
+
     public EmployeeResource addEmployee(EmployeeDTO employeeDto) {
         Employee emp = convertEmployeeDTOtoEmployee(employeeDto);
         Employee result = _service.addEmployees(emp);
         return convertEmployeeToEmployeeResource(result);
+    }
+
+    public EmployeeResource editEmployee(Integer id, EmployeeDTO employeeDto) {
+        throw new NotImplementedException();//TODO
+    }
+
+    public Integer deleteEmployee(Integer id) {
+        throw new NotImplementedException();//TODO
     }
 
     public EmployeeResource convertEmployeeToEmployeeResource(Employee employee) {
