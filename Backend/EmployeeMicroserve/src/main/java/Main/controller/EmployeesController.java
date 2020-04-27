@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/employeeMicroservice")
 public class EmployeesController {
@@ -32,12 +32,12 @@ public class EmployeesController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/employees/{id}")
-    public EmployeeResource updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDto){
-        return _service.updateEmployee(id,employeeDto);
+    public EmployeeResource updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDto) {
+        return _service.updateEmployee(id, employeeDto);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/employees/{id}")
-    public String deleteEmployee(@PathVariable Integer id){
+    public String deleteEmployee(@PathVariable Integer id) {
         return _service.deleteEmployee(id);
     }
 }

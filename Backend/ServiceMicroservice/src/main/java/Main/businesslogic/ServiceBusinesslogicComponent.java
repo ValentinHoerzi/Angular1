@@ -39,7 +39,7 @@ public class ServiceBusinesslogicComponent {
     }
 
     public Service updateService(Integer id, Service e) {
-        ServiceEntity updatedEntity = createUpdatedService(id,e);
+        ServiceEntity updatedEntity = createUpdatedService(id, e);
         ServiceEntity save = db.save(updatedEntity);
         return convertServiceEntityToService(save);
     }
@@ -54,8 +54,8 @@ public class ServiceBusinesslogicComponent {
         throw new NotImplementedException();
     }
 
-    private ServiceEntity findServiceById(Integer id){
-        return db.findById(id).orElseThrow(() -> new ServiceNotFoundException(String.format("Service with the id %d not found",id)));
+    private ServiceEntity findServiceById(Integer id) {
+        return db.findById(id).orElseThrow(() -> new ServiceNotFoundException(String.format("Service with the id %d not found", id)));
     }
 
     private ServiceEntity convertServiceToServiceEntity(Service service) {
