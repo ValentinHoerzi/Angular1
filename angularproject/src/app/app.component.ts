@@ -4,13 +4,20 @@ import { User } from './service-component/user.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Service Project';
+  inputText: string = "Initial Value";
   user: User;
-  constructor(){
-    this.user = new User("User1","Dev","here",["123","123"]);
+
+  constructor() {
+    this.user = new User(
+      'Valentin Hörzi',
+      'Developer',
+      'Hydenstraße 14, 4600 Wels, Österreich',
+      ['123-456', '123-789']
+    );
   }
 
   @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
