@@ -18,13 +18,13 @@ public class EmployeeBusinesslogicComponent {
 
     public List<Employee> getEmployees() {
         List<Employee> employees = new ArrayList<>();
-        for(EmployeeEntity entity : db.findAll()){
+        for (EmployeeEntity entity : db.findAll()) {
             employees.add(convertEmployeeEntityToEmployee(entity));
         }
         return employees;
     }
 
-    public Employee getEmployeeById(Integer id){
+    public Employee getEmployeeById(Integer id) {
         EmployeeEntity employee = findEmployeeById(id);
         return convertEmployeeEntityToEmployee(employee);
     }
@@ -36,7 +36,7 @@ public class EmployeeBusinesslogicComponent {
     }
 
     public Employee updateEmployee(Integer id, Employee employee) {
-        EmployeeEntity updatedEmployee = createdUpdatedEmployee(id,employee);
+        EmployeeEntity updatedEmployee = createdUpdatedEmployee(id, employee);
         EmployeeEntity save = db.save(updatedEmployee);
         return convertEmployeeEntityToEmployee(save);
     }
@@ -44,11 +44,11 @@ public class EmployeeBusinesslogicComponent {
     public String deleteEmployee(Integer id) {
         EmployeeEntity employee = findEmployeeById(id);
         db.deleteById(employee.getId());
-        return  employee.getName();
+        return employee.getName();
     }
 
-    public EmployeeEntity findEmployeeById(Integer id){
-        return db.findById(id).orElseThrow(() -> new EmployeeNotFoundException(String.format("Employee with id %d not found",id)));
+    public EmployeeEntity findEmployeeById(Integer id) {
+        return db.findById(id).orElseThrow(() -> new EmployeeNotFoundException(String.format("Employee with id %d not found", id)));
     }
 
     private Employee convertEmployeeEntityToEmployee(EmployeeEntity entity) {
@@ -62,7 +62,7 @@ public class EmployeeBusinesslogicComponent {
         return employee;
     }
 
-    private EmployeeEntity convertEmployeeToEmployeeEntity(Employee employee){
+    private EmployeeEntity convertEmployeeToEmployeeEntity(Employee employee) {
         EmployeeEntity entity = new EmployeeEntity();
 
         entity.setId(null);

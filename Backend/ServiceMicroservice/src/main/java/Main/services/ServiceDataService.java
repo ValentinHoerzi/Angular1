@@ -6,7 +6,6 @@ import Main.data.ServiceDTO;
 import Main.data.ServiceResource;
 import Main.exceptions.ServiceBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,7 +40,7 @@ public class ServiceDataService {
 
     public ServiceResource updateService(Integer id, ServiceDTO serviceDTO) throws ParseException {
         Service service = convertServiceDTOtoService(serviceDTO);
-        return convertServiceToServiceResource(_service.updateService(id,service));
+        return convertServiceToServiceResource(_service.updateService(id, service));
     }
 
     public String deleteService(Integer id) {
@@ -87,12 +86,12 @@ public class ServiceDataService {
             throw new ServiceBadRequestException("Date must not be null or empty");
         if (serviceDTO.getName().length() <= 5)
             throw new ServiceBadRequestException("Address length must be > 5");
-        if(serviceDTO.getEmployeeId() == null || serviceDTO.getEmployeeId() <= 0)
+        if (serviceDTO.getEmployeeId() == null || serviceDTO.getEmployeeId() <= 0)
             throw new ServiceBadRequestException("Employee_id must exist");
         try {
             sdf.parse(serviceDTO.getDate());
         } catch (ParseException e) {
-            throw new ServiceBadRequestException("Date must be in format dd.mm.yyy hh:MM");
+            throw new ServiceBadRequestException("Date must be in format dd.mm.yyyy hh:MM");
         }
     }
 
