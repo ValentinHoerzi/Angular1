@@ -1,5 +1,5 @@
 import { Component,AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { User } from './service-component/user.model';
+// import { User } from './service-component/user.model';
 
 import { LogicService } from './logic.service';
 
