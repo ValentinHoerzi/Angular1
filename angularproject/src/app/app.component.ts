@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './service-component/user.model';
+import { LogicService } from './logic.service';
 
 @Component({
   selector: 'app-root',
