@@ -8,6 +8,7 @@ import { User } from './service-component/user.model';
 })
 export class AppComponent {
   title = 'Service Project';
+  inputText: string = "Initial Value";
   user: User;
 
   constructor() {
