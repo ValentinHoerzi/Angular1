@@ -8,10 +8,9 @@ import { User } from './user.model';
 })
 export class ServiceComponentComponent implements OnInit {
   @Input('user') user: User;
+  isCollapsed: boolean = true;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.user = {
@@ -20,5 +19,9 @@ export class ServiceComponentComponent implements OnInit {
       address: this.user.address,
       phone: this.user.phone,
     };
+  }
+
+  toggleCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

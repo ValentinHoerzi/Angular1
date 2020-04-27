@@ -4,10 +4,15 @@ export class User {
   address: string;
   phone: string[];
 
-  constructor(name: string, designation: string, address: string, phoen: string[]){
+  constructor(
+    name: string,
+    designation: string,
+    address: string,
+    phoen: string[]
+  ) {
     this.name = name;
     this.designation = designation;
-    this. address = address;
+    this.address = address;
     this.phone = phoen;
   }
 }
