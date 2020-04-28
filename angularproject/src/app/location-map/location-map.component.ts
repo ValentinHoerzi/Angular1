@@ -30,42 +30,37 @@ export class LocationMapComponent implements OnInit {
             this.services = services;
             this.employees = employees;
 
-            this.createServiceMarker(this.services);
-        });
+            let serviceMarkers = this.createMarker<ServiceRes>(this.services, '#0000FF', this.createServiceMarkerPopup);
+            let employeeMarkers = this.createMarker<EmployeeRes>(this.employees, '#8B0000', this.createEmployeeMarkerPopup);
 
-        this.logicService.getServices().subscribe(services => {
-            this.services = services;
-            this.addServicesToMap(this.services);
-        });
+            let markers = serviceMarkers.concat(employeeMarkers);
+            let bounds = new mapboxgl.LngLatBounds();
 
-        this.logicService.getEmployees().subscribe(employees => {
-            this.employees = employees;
-            this.addEmployeesToMap(this.employees);
+            markers.forEach(marker => marker.addTo(this.map));
+            markers.forEach(marker => bounds.extend(marker.getLngLat()));
+            this.map.fitBounds(bounds, { padding: 100 });
         });
     }
-    private createServiceMarker(services: ServiceRes[]): mapboxgl.Marker[] {
-        return services.map(x => {
-            let popup = new mapboxgl.Popup({ offset: 25 })
-                .setHTML(`<h3> ${x.name} </h3>`);
 
-            let markerIcon = document.createElement('div');
-            markerIcon.innerHTML = this.markerIconHtml("#0000FF").trim();
-
-            return new mapboxgl.Marker(markerIcon)
-                .setLngLat([Number(x.longitude), Number(x.latitude)])
-                .setPopup(popup);
-        });
+    private createServiceMarkerPopup(x: ServiceRes): mapboxgl.Popup {
+        return new mapboxgl.Popup({ offset: 25 })
+            .setHTML(`<h3> ${x.name} </h3>`);
     }
-    private createEmployeeMarker(employees: EmployeeRes[]): mapboxgl.Marker[] {
-        return employees.map(x => {
-            let popup = new mapboxgl.Popup({ offset: 25 })
-                .setHTML(`<h3> ${x.name} </h3>`);
+
+    private createEmployeeMarkerPopup(x: EmployeeRes): mapboxgl.Popup {
+        return new mapboxgl.Popup({ offset: 25 })
+            .setHTML(`<h3> ${x.name} </h3>`);
+    }
+
+    private createMarker<T>(data: T[], markerColor: string, createPopupFunc: (e: T) => mapboxgl.Popup): mapboxgl.Marker[] {
+        return data.map(d => {
+            let popup = createPopupFunc(d);
 
             let markerIcon = document.createElement('div');
-            markerIcon.innerHTML = this.markerIconHtml("#8B0000").trim();
+            markerIcon.innerHTML = this.markerIconHtml(markerColor).trim();
 
             return new mapboxgl.Marker(markerIcon)
-                .setLngLat([Number(x.longitude), Number(x.latitude)])
+                .setLngLat([Number((d as any).longitude), Number((d as any).latitude)])
                 .setPopup(popup);
         });
     }
@@ -77,44 +72,6 @@ export class LocationMapComponent implements OnInit {
             style: 'mapbox://styles/mapbox/dark-v10',
         });
         this.map.addControl(new mapboxgl.NavigationControl());
-    }
-
-
-    private addServicesToMap(services: ServiceRes[]) {
-        let bounds = new mapboxgl.LngLatBounds();
-        let markers = services.map(x => {
-            let popup = new mapboxgl.Popup({ offset: 25 })
-                .setHTML(`<h3> ${x.name} </h3>`);
-
-            let markerIcon = document.createElement('div');
-            markerIcon.innerHTML = this.markerIconHtml("#0000FF").trim();
-
-            return new mapboxgl.Marker(markerIcon)
-                .setLngLat([Number(x.longitude), Number(x.latitude)])
-                .setPopup(popup)
-                .addTo(this.map);
-        });
-
-    }
-
-    private addEmployeesToMap(employees: EmployeeRes[]) {
-        let bounds = new mapboxgl.LngLatBounds();
-        let markers = employees.map(x => {
-            let popup = new mapboxgl.Popup({ offset: 25 })
-                .setHTML(`<h3> ${x.name} </h3>`);
-
-            let markerIcon = document.createElement('div');
-            markerIcon.innerHTML = this.markerIconHtml("#8B0000").trim();
-
-            return new mapboxgl.Marker(markerIcon)
-                .setLngLat([Number(x.longitude), Number(x.latitude)])
-                .setPopup(popup)
-                .addTo(this.map);
-        });
-
-
-        markers.forEach(marker => bounds.extend(marker.getLngLat()));
-        this.map.fitBounds(bounds, { padding: 100 });
     }
 
     private markerIconHtml(colorCode: string): string {
