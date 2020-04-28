@@ -3,4 +3,9 @@
 <!-- <input type="text" [(ngModel)]="inputText">
 {{inputText}} -->  
 <!-- <div #mapContainer id="map"></div> -->
-<app-location-map></app-location-map>
+<div class="wrapper">
+    <div class="left-side">
+        <app-service-component></app-service-component>
+    </div>
+    <app-location-map class="right-side"></app-location-map>
+</div>

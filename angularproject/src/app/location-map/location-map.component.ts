@@ -3,6 +3,7 @@ import { LogicService } from '../logic.service';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
 import { EmployeeRes } from '../service-component/employeeRes.model';
+import { ServiceRes } from '../service-component/serviceRes.model';
 
 @Component({
     selector: 'app-location-map',
@@ -14,21 +15,25 @@ export class LocationMapComponent implements OnInit {
     constructor(private logicService: LogicService) { }
 
     map: mapboxgl.Map;
-    lat = 37.75;
-    lng = -122.41;
 
+    public employees: EmployeeRes[] = [];
+    public services: ServiceRes[] = [];
 
     public ngOnInit(): void {
         this.logicService.getEmployees().subscribe(employees => {
-            this.addEmployeesToMap(employees);
+            this.employees = employees;
+            this.addEmployeesToMap(this.employees);
+        });
+
+        this.logicService.getServices().subscribe(services => {
+            this.services = services;
         });
 
         this.map = new mapboxgl.Map({
             accessToken: environment.mapbox.accessToken,
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: 'mapbox://styles/mapbox/dark-v10',
             zoom: 13,
-            center: [this.lng, this.lat]
         });    // Add map controls
         this.map.addControl(new mapboxgl.NavigationControl());
     }

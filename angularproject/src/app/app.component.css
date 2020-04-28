@@ -1,0 +1,16 @@
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.left-side {
+    min-width: 30%;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #7b7b7b;
+}
+
+.right-side {
+    width: 100%;
+}
