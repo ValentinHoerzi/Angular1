@@ -14,30 +14,34 @@ export class LocationMapComponent implements OnInit {
     constructor(private logicService: LogicService) { }
 
     map: mapboxgl.Map;
-    style = 'mapbox://styles/mapbox/streets-v11';
     lat = 37.75;
     lng = -122.41;
 
 
     public ngOnInit(): void {
         this.logicService.getEmployees().subscribe(employees => {
-            employees.forEach(e => this.addEmployeeToMap(e))
+            this.addEmployeesToMap(employees);
         });
 
         this.map = new mapboxgl.Map({
             accessToken: environment.mapbox.accessToken,
             container: 'map',
-            style: this.style,
+            style: 'mapbox://styles/mapbox/streets-v11',
             zoom: 13,
             center: [this.lng, this.lat]
         });    // Add map controls
         this.map.addControl(new mapboxgl.NavigationControl());
     }
 
-    private addEmployeeToMap(x: EmployeeRes): void {
-        let marker = new mapboxgl.Marker()
-            .setLngLat([Number(x.longitude), Number(x.latitude)])
-            .addTo(this.map);
-    }
 
+    private addEmployeesToMap(employees: EmployeeRes[]) {
+        let bounds = new mapboxgl.LngLatBounds();
+        let markers = employees.map(x => new mapboxgl.Marker()
+            .setLngLat([Number(x.longitude), Number(x.latitude)]));
+        markers.forEach(m => {
+            m.addTo(this.map);
+            bounds.extend(m.getLngLat());
+        });
+        this.map.fitBounds(bounds, { padding: 100 });
+    }
 }
