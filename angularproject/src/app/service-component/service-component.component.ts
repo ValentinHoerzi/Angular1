@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LogicService } from '../logic.service';
 import { ServiceRes } from './serviceRes.model';
 import { MatDialog } from '@angular/material/dialog';
+import { AddServiceDialogComponent } from '../add-service-dialog/add-service-dialog.component';
+import { ServiceDto } from './serviceDto.model';
 
 @Component({
     selector: 'app-service-component',
@@ -18,6 +20,19 @@ export class ServiceComponentComponent implements OnInit {
         this._service.getServices().subscribe(services => {
             this.services = services;
         });
+    }
+
+    public openDialog(): void {
+        const dialogRef = this.dialog.open(AddServiceDialogComponent, {
+            width: '250px',
+            data: null
+          });
+      
+          dialogRef.afterClosed().subscribe(result => {
+            if (!result) return;
+
+            console.log('results', result)
+          });
     }
 
 

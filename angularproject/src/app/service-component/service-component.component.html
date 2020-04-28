@@ -1,7 +1,11 @@
-<div class="header">
-    <h1> Dienste </h1>
-    <button> Service hinzufügen</button>
-</div>
+
+
+<mat-card class="header-card">
+    <div class="header">
+        <h1> Dienste </h1>
+        <button mat-raised-button color="accent" (click)="openDialog()"> Dienst hinzufügen</button>
+    </div>
+</mat-card>
 
 
 <mat-card *ngFor="let service of services">
