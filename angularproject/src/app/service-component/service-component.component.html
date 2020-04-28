@@ -3,12 +3,12 @@
     <button> Service hinzufügen</button>
 </div>
 
-<div *ngFor="let service of services">
-    
+
+<mat-card *ngFor="let service of services">
     <div class="card-layout">
         <h2>{{service.name}}</h2>
 
         <p>{{service.date}}</p>
         <small>{{service.latitude}}</small>
     </div>
-</div>
+</mat-card>
