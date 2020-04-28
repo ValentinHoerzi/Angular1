@@ -6,11 +6,13 @@ import {HttpClientModule} from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { ServiceComponentComponent } from './service-component/service-component.component';
 import { LogicService } from './logic.service';
+import { LocationMapComponent } from './location-map/location-map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServiceComponentComponent
+    ServiceComponentComponent,
+    LocationMapComponent
   ],
   imports: [
     BrowserModule,
