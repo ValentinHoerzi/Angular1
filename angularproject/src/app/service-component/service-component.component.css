@@ -1,5 +1,7 @@
 mat-card {
     margin-bottom: 10px;
+    background-color: #272727;
+    color: white;
 }
 .header {
     margin-top: 20px;
@@ -8,6 +10,7 @@ mat-card {
 }
 .header-card {
     margin-top: 20px;
+    background-color: #1D1D1D;
 }
 h1 {
     margin-bottom: 0px;
