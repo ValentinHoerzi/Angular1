@@ -22,14 +22,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatSelectModule} from '@angular/material/select'; 
-import {MatMenuModule} from '@angular/material/menu'; 
+import {MatMenuModule} from '@angular/material/menu';
+import { DisplayServiceComponent } from './display-service/display-service.component'; 
 
 @NgModule({
     declarations: [
         AppComponent,
         ServiceComponentComponent,
         LocationMapComponent,
-        AddServiceDialogComponent
+        AddServiceDialogComponent,
+        DisplayServiceComponent
     ],
     imports: [
         BrowserModule,

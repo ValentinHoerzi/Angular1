@@ -4,6 +4,7 @@ import { ServiceRes } from './serviceRes.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddServiceDialogComponent } from '../add-service-dialog/add-service-dialog.component';
 import { ServiceDto } from './serviceDto.model';
+import { GeolocationService } from '../geolocation.service';
 
 @Component({
     selector: 'app-service-component',
@@ -14,7 +15,15 @@ export class ServiceComponentComponent implements OnInit {
 
     public services: ServiceRes[] = [];
 
-    public constructor(private _service: LogicService, public dialog: MatDialog) { }
+    public query: string;
+    public position: string;
+    public locations: Array<any>;
+
+    public constructor(private _service: LogicService, public dialog: MatDialog,
+        private geolocationService: GeolocationService) {
+        this.query = "Tracy, CA";
+        this.position = "37.7397,-121.4252";
+    }
 
     public ngOnInit(): void {
         this._service.getServices().subscribe(services => {
@@ -22,34 +31,14 @@ export class ServiceComponentComponent implements OnInit {
         });
     }
 
-    public editService(clickedService: ServiceRes) {
-        const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '250px',
-            data: { ...clickedService }
-        });
-
-        dialogRef.afterClosed().subscribe((service: ServiceDto) => {
-            if (!service) return;
-
-            console.log('editedService', service);
-            this._service.updateService(clickedService.id.toString(), service).subscribe(serviceResult => {
-                console.log('gotten into it');
-                let replaceId = this.services.findIndex(s => s.id == serviceResult.id);
-                this.services[replaceId] = serviceResult;
-            });
-            // this._service.addService(service).subscribe(serviceRes => this.services.push(serviceRes));
-        });
+    public deleteService(service: ServiceRes) {
+        let index = this.services.findIndex(s => s === service);
+        this.services.splice(index, 1);
     }
 
-    public deleteService(service: ServiceRes) {
-        console.log('method', service);
-        this._service.deleteService(service.id.toString()).subscribe(deletedServiceName => {
-            // dunnot why this is only a name
-            console.log('deletedName', deletedServiceName);
-            let index = this.services.findIndex(s => s === service);
-            this.services.splice(index, 1);
-            console.log('index', index);
-        });
+    public editService(service: ServiceRes) {
+        let replaceId = this.services.findIndex(s => s.id == service.id);
+        this.services[replaceId] = service;
     }
 
     public createNewService() {

@@ -7,31 +7,6 @@
 
 
 <mat-card *ngFor="let service of services">
-    <div class="card-layout">
-
-        <div class="service-header">
-            <h2>{{service.name}}</h2>
-            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="editService(service)">
-                    <mat-icon>edit</mat-icon>
-                    <span>Bearbeiten</span>
-                </button>
-
-                <button mat-menu-item (click)="deleteService(service)">
-                    <mat-icon>delete_outline</mat-icon>
-                    <span>Löschen</span>
-                </button>
-
-            </mat-menu>
-        </div>
-
-
-        <p>{{service.date}}</p>
-        <p>{{service.latitude}}</p>
-
-    </div>
+    <app-display-service [service]="service" (onDeleted)="deleteService($event)" (onEdited)="editService($event)">
+    </app-display-service>
 </mat-card>
