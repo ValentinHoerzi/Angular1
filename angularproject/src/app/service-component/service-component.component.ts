@@ -25,7 +25,7 @@ export class ServiceComponentComponent implements OnInit {
     public editService(clickedService: ServiceRes) {
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
             width: '250px',
-            data: {... clickedService}
+            data: { ...clickedService }
         });
 
         dialogRef.afterClosed().subscribe((service: ServiceDto) => {
@@ -38,6 +38,17 @@ export class ServiceComponentComponent implements OnInit {
                 this.services[replaceId] = serviceResult;
             });
             // this._service.addService(service).subscribe(serviceRes => this.services.push(serviceRes));
+        });
+    }
+
+    public deleteService(service: ServiceRes) {
+        console.log('method', service);
+        this._service.deleteService(service.id.toString()).subscribe(deletedServiceName => {
+            // dunnot why this is only a name
+            console.log('deletedName', deletedServiceName);
+            let index = this.services.findIndex(s => s === service);
+            this.services.splice(index, 1);
+            console.log('index', index);
         });
     }
 
