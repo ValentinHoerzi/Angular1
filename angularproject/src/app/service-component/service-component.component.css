@@ -5,6 +5,7 @@ mat-card {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+   
 }
 .header-card {
     margin-top: 20px;
@@ -12,3 +13,30 @@ mat-card {
 h1 {
     margin-bottom: 0px;
 }
+.moreIcon{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 8px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+.serviceName
+{
+    margin-top: 10px;
+    margin-left: 5px;
+    display: inline;
+
+}
+.serviceDate
+{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.serviceAdress
+{    display: inline;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+

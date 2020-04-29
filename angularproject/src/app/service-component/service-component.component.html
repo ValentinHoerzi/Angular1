@@ -10,9 +10,16 @@
 
 <mat-card *ngFor="let service of services">
     <div class="card-layout">
-        <h2>{{service.name}}</h2>
+        
+            <h2 class="serviceName">{{service.name}}</h2>
+            <p class="serviceDate">{{service.date}}</p>
+       
+        
 
-        <p>{{service.date}}</p>
-        <small>{{service.latitude}}</small>
+       
+        <small class="serviceAdres">{{service.latitude}}</small>
+        <mat-icon class="moreIcon" aria-hidden="false" aria-label="more_vert" (click)="openDialog()">more_vert</mat-icon>
+
     </div>
+
 </mat-card>

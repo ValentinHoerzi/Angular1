@@ -14,7 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AddServiceDialogComponent } from './add-service-dialog/add-service-dialog.component'; 
-
+import {MatIconModule} from '@angular/material/icon'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +31,7 @@ import { AddServiceDialogComponent } from './add-service-dialog/add-service-dial
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatIconModule,
   ],
   providers: [
     LogicService
