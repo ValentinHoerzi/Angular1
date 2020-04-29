@@ -9,17 +9,16 @@ import { ServiceDto } from '../service-component/serviceDto.model';
 })
 export class AddServiceDialogComponent implements OnInit {
 
-
     constructor(
         public dialogRef: MatDialogRef<AddServiceDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: ServiceDto) { }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         console.log('gotten', this.data);
     }
 
-    onNoClick(): void {
-        this.dialogRef.close('svenno');
+    public onNoClick(): void {
+        this.dialogRef.close(this.data);
     }
 
 }

@@ -23,16 +23,18 @@ export class ServiceComponentComponent implements OnInit {
     }
 
     public openDialog(): void {
+        let newService = new ServiceDto('', '', '', '', -1);
+
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
             width: '250px',
-            data: null
-          });
-      
-          dialogRef.afterClosed().subscribe(result => {
+            data: newService
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
             if (!result) return;
 
             console.log('results', result)
-          });
+        });
     }
 
 
