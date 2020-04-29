@@ -24,8 +24,8 @@ export class ServiceComponentComponent implements OnInit {
 
     public editService(clickedService: ServiceRes) {
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '250px',
-            data: { ...clickedService }
+            width: '500px', 
+                       data: { ...clickedService }
         });
 
         dialogRef.afterClosed().subscribe((service: ServiceDto) => {
@@ -56,7 +56,7 @@ export class ServiceComponentComponent implements OnInit {
         let newService = new ServiceDto('', '', '', '', -1);
 
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '250px',
+            width: '500px',
             data: newService
         });
 
