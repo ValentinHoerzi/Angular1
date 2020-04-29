@@ -30,10 +30,12 @@ export class ServiceComponentComponent implements OnInit {
             data: newService
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-            if (!result) return;
+        dialogRef.afterClosed().subscribe((service: ServiceDto) => {
+            if (!service) return;
 
-            console.log('results', result)
+            this._service.addService(service).subscribe(serviceRes => this.services.push(serviceRes));
+            console.log('results', service)
+
         });
     }
 
