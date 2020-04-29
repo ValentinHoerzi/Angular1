@@ -2,6 +2,7 @@ mat-card {
     margin-bottom: 10px;
     background-color: #272727;
     color: white;
+    opacity: 0.9;
 }
 .header {
     margin-top: 20px;

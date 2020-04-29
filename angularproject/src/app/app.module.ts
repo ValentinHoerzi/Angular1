@@ -24,6 +24,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatMenuModule} from '@angular/material/menu';
 import { DisplayServiceComponent } from './display-service/display-service.component'; 
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,7 @@ import { DisplayServiceComponent } from './display-service/display-service.compo
         MatIconModule, ReactiveFormsModule, BrowserAnimationsModule,
         MatDatepickerModule, MatNativeDateModule,
         NgxMaterialTimepickerModule, MatSelectModule,
-        MatMenuModule,
+        MatMenuModule,MatBadgeModule,
     ],
     providers: [
         LogicService

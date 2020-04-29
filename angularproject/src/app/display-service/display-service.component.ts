@@ -18,6 +18,8 @@ export class DisplayServiceComponent implements OnInit {
     @Output() onEdited = new EventEmitter<ServiceRes>();
 
     public address: string;
+    public employeeName: string;
+    public markerIconColor: string = '#0000FF'; // #0000FF services
 
     constructor(private _service: LogicService, public dialog: MatDialog,
         private geolocationService: GeolocationService) { }
@@ -25,6 +27,9 @@ export class DisplayServiceComponent implements OnInit {
     public ngOnInit(): void {
         this.geolocationService.getAddress(this.service.latitude, this.service.longitude).subscribe(geoData =>
             this.address = this.geolocationService.convertToAddress(geoData)
+        );
+        this._service.getEmployeeById(this.service.employeeId.toString()).subscribe(employee =>
+            this.employeeName = employee.name
         );
     }
 
