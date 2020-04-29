@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatSelectModule} from '@angular/material/select'; 
+import {MatMenuModule} from '@angular/material/menu'; 
 
 @NgModule({
     declarations: [
@@ -42,8 +43,7 @@ import {MatSelectModule} from '@angular/material/select';
         MatIconModule, ReactiveFormsModule, BrowserAnimationsModule,
         MatDatepickerModule, MatNativeDateModule,
         NgxMaterialTimepickerModule, MatSelectModule,
-
-        
+        MatMenuModule,
     ],
     providers: [
         LogicService

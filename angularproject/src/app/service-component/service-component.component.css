@@ -1,5 +1,7 @@
 mat-card {
     margin-bottom: 10px;
+    background-color: #272727;
+    color: white;
 }
 .header {
     margin-top: 20px;
@@ -9,34 +11,19 @@ mat-card {
 }
 .header-card {
     margin-top: 20px;
+    background-color: #1D1D1D;
 }
 h1 {
     margin-bottom: 0px;
 }
-.moreIcon{
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    margin-top: 8px;
-    margin-right: 3px;
-    cursor: pointer;
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.serviceName
-{
-    margin-top: 10px;
-    margin-left: 5px;
-    display: inline;
-
+h2 {
+    margin-bottom: 0;
 }
-.serviceDate
-{
-    margin-top: 10px;
-    margin-left: 5px;
+mat-menu {
+    display: none;
 }
-.serviceAdress
-{    display: inline;
-    margin-top: 10px;
-    margin-left: 5px;
-}
-
-
