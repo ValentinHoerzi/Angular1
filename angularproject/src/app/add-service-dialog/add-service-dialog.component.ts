@@ -11,14 +11,14 @@ export class AddServiceDialogComponent implements OnInit {
 
     constructor(
         public dialogRef: MatDialogRef<AddServiceDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: ServiceDto) { }
+        @Inject(MAT_DIALOG_DATA) public service: ServiceDto) { }
 
     public ngOnInit(): void {
-        console.log('gotten', this.data);
+        console.log('gotten', this.service);
     }
 
     public onNoClick(): void {
-        this.dialogRef.close(this.data);
+        this.dialogRef.close(this.service);
     }
 
 }
