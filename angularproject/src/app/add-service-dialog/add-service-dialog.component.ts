@@ -5,6 +5,8 @@ import { LogicService } from '../logic.service';
 import { EmployeeRes } from '../service-component/employeeRes.model';
 import { DatePipe } from '@angular/common';
 
+import * as moment from 'moment';
+
 @Component({
     selector: 'app-add-service-dialog',
     templateUrl: './add-service-dialog.component.html',
@@ -26,6 +28,16 @@ export class AddServiceDialogComponent implements OnInit {
     public ngOnInit(): void {
         console.log('gotten', this.service);
         this.logicService.getEmployees().subscribe(employees => this.employees = employees);
+
+        if (this.service) {
+            this.fillDateAndTime();
+        }
+    }
+
+    private fillDateAndTime() {
+        let dateTimeSplit = this.service.date.split(' ');
+        this.customDate = moment(dateTimeSplit[0], 'DD.MM.YYYY').toDate();
+        this.customTime = dateTimeSplit[1];
     }
 
     public closeDialogAndSave(): void {

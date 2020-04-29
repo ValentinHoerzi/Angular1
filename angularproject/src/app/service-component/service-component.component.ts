@@ -22,7 +22,26 @@ export class ServiceComponentComponent implements OnInit {
         });
     }
 
-    public openDialog(): void {
+    public editService(clickedService: ServiceRes) {
+        const dialogRef = this.dialog.open(AddServiceDialogComponent, {
+            width: '250px',
+            data: {... clickedService}
+        });
+
+        dialogRef.afterClosed().subscribe((service: ServiceDto) => {
+            if (!service) return;
+
+            console.log('editedService', service);
+            this._service.updateService(clickedService.id.toString(), service).subscribe(serviceResult => {
+                console.log('gotten into it');
+                let replaceId = this.services.findIndex(s => s.id == serviceResult.id);
+                this.services[replaceId] = serviceResult;
+            });
+            // this._service.addService(service).subscribe(serviceRes => this.services.push(serviceRes));
+        });
+    }
+
+    public createNewService() {
         let newService = new ServiceDto('', '', '', '', -1);
 
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
@@ -34,10 +53,7 @@ export class ServiceComponentComponent implements OnInit {
             if (!service) return;
 
             this._service.addService(service).subscribe(serviceRes => this.services.push(serviceRes));
-            console.log('results', service)
-
         });
     }
-
 
 }

@@ -9,6 +9,7 @@
     padding-left: 10px;
     padding-right: 10px;
     background-color: #7b7b7b;
+    overflow: auto;
 }
 
 .right-side {
