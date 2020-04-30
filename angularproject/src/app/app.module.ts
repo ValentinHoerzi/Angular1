@@ -27,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DisplayServiceComponent } from './display-service/display-service.component'; 
 import {MatBadgeModule} from '@angular/material/badge';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import {MatBadgeModule} from '@angular/material/badge';
         ServiceComponentComponent,
         LocationMapComponent,
         AddServiceDialogComponent,
-        DisplayServiceComponent
+        DisplayServiceComponent,
+        ConfirmDialogComponent
     ],
     imports: [
         BrowserModule,
