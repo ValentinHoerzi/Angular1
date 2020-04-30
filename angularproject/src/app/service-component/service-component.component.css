@@ -12,10 +12,13 @@ mat-card {
  {
     background-color:rgba(255, 255, 255, 0.4);;
      height:  100%;
+     width: 100%;
      padding: 10px;
      background-image: url("../../images/background_sidebar.png");
      background-repeat: no-repeat, repeat;
      background-size: 100%;
+     padding-right: 10px;
+
  }
 .header {
     display: flex;
@@ -85,7 +88,7 @@ mat-menu {
 .shadow
 {
     box-shadow: 0 0px 6px rgba(231,76,60,0.20), 0 0px 6px rgba(231,76,60,0.20)  !important;
-
+    margin-right: 10px;
 }
 
 .dienste
