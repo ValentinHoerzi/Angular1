@@ -1,7 +1,29 @@
-
 <div class="wrapper">
-    <div class="left-side">
-        <app-service-component></app-service-component>
-    </div> 
-    <app-location-map class="right-side"></app-location-map>
+
+    <mat-drawer-container class="example-container" hasBackdrop="false">
+        <!-- Change to over and add back button -->
+        <mat-drawer #drawer mode="over">
+            <div class="back-button">
+                <button mat-icon-button aria-label="Fenster minimieren" (click)="minimizeDrawer()">
+                    <mat-icon>keyboard_backspace</mat-icon>
+                </button>
+            </div>
+            <app-service-component *ngIf="showService"></app-service-component>
+            <p *ngIf="!showService">Sven</p>
+
+        </mat-drawer>
+        <mat-drawer-content>
+
+            <div class="front-page">
+                <div class="buttons">
+                    <button mat-raised-button (click)="showServices()">Services</button>
+                    <button mat-raised-button (click)="showEmployees()">Employees</button>
+                </div>
+
+                <app-location-map></app-location-map>
+            </div>
+
+        </mat-drawer-content>
+    </mat-drawer-container>
+
 </div>

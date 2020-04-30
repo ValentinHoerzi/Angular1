@@ -27,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DisplayServiceComponent } from './display-service/display-service.component'; 
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSidenavModule} from '@angular/material/sidenav'; 
 
 @NgModule({
     declarations: [
@@ -50,6 +51,7 @@ import {MatBadgeModule} from '@angular/material/badge';
         MatMenuModule,
         MatSnackBarModule,
         MatBadgeModule,
+        MatSidenavModule,
     ],
     providers: [
         LogicService

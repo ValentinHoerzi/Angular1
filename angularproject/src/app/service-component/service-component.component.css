@@ -11,13 +11,12 @@ mat-card {
 .sideBar
  {
     background-color:rgba(255, 255, 255, 0.4);;
-     height:  100%;
-     width: 100%;
+
      padding: 10px;
      background-image: url("../../images/background_sidebar.png");
      background-repeat: no-repeat, repeat;
-     background-size: 100%;
-     padding-right: 10px;
+
+
 
  }
 .header {
