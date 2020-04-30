@@ -44,12 +44,13 @@ export class LocationMapComponent implements OnInit {
 
     private createServiceMarkerPopup(x: ServiceRes): mapboxgl.Popup {
         return new mapboxgl.Popup({ offset: 25 })
-            .setHTML(`<h3> ${x.name} </h3>`);
+            .setHTML(`<h3> ${x.name} </h3>
+            <h4>${x.date}</h4>`);
     }
 
     private createEmployeeMarkerPopup(x: EmployeeRes): mapboxgl.Popup {
         return new mapboxgl.Popup({ offset: 25 })
-            .setHTML(`<h3> ${x.name} </h3>`);
+            .setHTML(`<h2> ${x.name} </h2>`);
     }
 
     private createMarker<T>(data: T[], markerColor: string, createPopupFunc: (e: T) => mapboxgl.Popup): mapboxgl.Marker[] {
