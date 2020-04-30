@@ -45,7 +45,7 @@ export class ServiceComponentComponent implements OnInit {
         let newService = new ServiceDto('', '', '', '', -1);
 
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '250px',
+            width: '500px',
             data: newService
         });
 

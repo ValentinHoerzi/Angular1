@@ -1,0 +1,47 @@
+
+.grid-container {
+    display: grid;
+  }
+  .background
+  {
+    background-color:rgba(0, 0, 0, 0.0);
+     
+  }
+
+  .header
+  {
+    
+        
+      margin-top: 30px;
+        
+  }
+
+  .buttnOk
+  {
+      width: 60px;
+    height: 30px;
+    font-size: 15px;
+      color:#E74C3C;
+      border-radius: 10px;
+      border-color: #E74C3C;
+      border-width: 1px;
+      cursor: pointer;
+      
+  }
+
+  .oneLine
+  {
+      margin-top: 20px;
+    display: flex;
+    justify-content: space-between;;
+    
+  }
+  ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #E74C3C !important;
+  } 
+
+  .mat-button.mat-success,
+  .mat-stroked-button.mat-success {
+      color: #155724;
+  }

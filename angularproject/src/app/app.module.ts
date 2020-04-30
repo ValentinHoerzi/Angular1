@@ -9,6 +9,7 @@ import { LogicService } from './logic.service';
 import { LocationMapComponent } from './location-map/location-map.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
