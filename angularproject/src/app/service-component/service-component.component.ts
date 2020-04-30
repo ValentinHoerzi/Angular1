@@ -19,9 +19,6 @@ export class ServiceComponentComponent implements OnInit {
     public constructor(private _service: LogicService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
     public ngOnInit(): void {
-        this._service.getServices().subscribe(services => {
-            this.services = services;
-        });
     }
 
     public deleteService(service: ServiceRes) {

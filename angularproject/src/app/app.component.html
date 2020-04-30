@@ -10,14 +10,17 @@
             </div>
             <app-service-component [services]="services" *ngIf="showService" (serviceChanged)="serviceChanged($event)">
             </app-service-component>
-            <div class="header-margin" *ngIf="!showService">
+
+            <app-employee-wrapper [employees]="employees" *ngIf="!showService" ></app-employee-wrapper>
+
+            <!-- <div class="header-margin" *ngIf="!showService">
 
                 <mat-card *ngFor="let employee of employees">
                     <app-display-employee [employee]="employee">
                     </app-display-employee>
                 </mat-card>
                
-            </div>
+            </div> -->
 
         </mat-drawer>
         <mat-drawer-content>

@@ -29,7 +29,8 @@ import { DisplayServiceComponent } from './display-service/display-service.compo
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
-import { SimpleServiceComponent } from './simple-service/simple-service.component'; 
+import { SimpleServiceComponent } from './simple-service/simple-service.component';
+import { EmployeeWrapperComponent } from './employee-wrapper/employee-wrapper.component'; 
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { SimpleServiceComponent } from './simple-service/simple-service.componen
         AddServiceDialogComponent,
         DisplayServiceComponent,
         DisplayEmployeeComponent,
-        SimpleServiceComponent
+        SimpleServiceComponent,
+        EmployeeWrapperComponent
     ],
     imports: [
         BrowserModule,
