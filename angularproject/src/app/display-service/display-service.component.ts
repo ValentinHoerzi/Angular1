@@ -35,7 +35,8 @@ export class DisplayServiceComponent implements OnInit {
 
     public editService(clickedService: ServiceRes) {
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '250px',
+            width: '350px',
+
             data: { ...clickedService }
         });
 
