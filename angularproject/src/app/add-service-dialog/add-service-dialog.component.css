@@ -12,13 +12,13 @@
   {
     
         
-      margin-top: 30px;
+      margin-top: 5px;
         
   }
 
-  /* .buttnOk
-  {
-      width: 60px;
+  .buttnOk
+  { 
+      /* width: 60px;
     height: 30px;
     font-size: 15px;
       color:#E74C3C;
@@ -26,14 +26,15 @@
       border-color: #E74C3C;
       border-width: 1px;
       cursor: pointer;
-      
-  } */
+       */
+       margin-top: -35px;
+  } 
 
   .oneLine
   {
-      margin-top: 20px;
+      margin-top: 5px;
     display: flex;
-    justify-content: space-between;;
+    justify-content: space-between;
     
   }
   ::ng-deep.mat-form-field-underline {
@@ -41,3 +42,17 @@
     background-color: #E74C3C !important;
   } 
 
+ 
+.grid-item
+{
+    width: 190px;
+
+    
+}
+
+
+
+#fullWidth
+{
+    width: 100% !important;
+}
