@@ -46,7 +46,6 @@ export class DisplayServiceComponent implements OnInit {
         dialogRef.afterClosed().subscribe((service: ServiceDto) => {
             if (!service) return;
 
-            console.log('editedService', service);
             this._service.updateService(clickedService.id.toString(), service).subscribe(serviceResult => {
                 this.onEdited.emit(serviceResult);
             });
@@ -54,12 +53,10 @@ export class DisplayServiceComponent implements OnInit {
     }
 
     public deleteService(service: ServiceRes) {
-        console.log('method', service);
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             width: '350px',
         });
         dialogRef.afterClosed().subscribe((deleted: string) => {
-            console.log('Dialog closed. Result: ' + deleted);
             if (deleted=='true') { 
                 this._service.deleteService(service.id.toString()).subscribe(deletedServiceName => {
                 this.onDeleted.emit(service);

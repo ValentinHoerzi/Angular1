@@ -3,7 +3,7 @@
         <h1 mat-dialog-title class="header">{{title}}</h1>
         <div mat-dialog-actions>
          <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
-        <button mat-raised-button color="primary" class="buttnOk" (click)="closeDialogAndSave()" cdkFocusInitial>{{actionString}}</button>
+        <button [disabled]="service.name.length < 5 || !service.latitude || !service.longitude"  mat-raised-button color="primary" class="buttnOk" (click)="closeDialogAndSave()" cdkFocusInitial>{{actionString}}</button>
          <!--[mat-dialog-close]="data"-->
         </div>
 </div>
@@ -14,20 +14,21 @@
     <mat-form-field appearance="standard"  class="grid-itemFull" id="fullWidth">
         <mat-label>Name</mat-label>
         <input [(ngModel)]="service.name" matInput placeholder="Name des Services">
+        <mat-hint align="start"><strong>Name muss mind. 5 Zeichen haben</strong> </mat-hint>
     </mat-form-field>
 
     <div  class="oneLine" >
     <!-- Long -->
     <mat-form-field  appearance="standard" class="grid-item">
         <mat-label>Longitude</mat-label>
-        <input [(ngModel)]="service.longitude" matInput placeholder="Longitude des Services">
+        <input [(ngModel)]="service.longitude" matInput placeholder="13.8">
     </mat-form-field>
     
     
     <!-- Lat -->
     <mat-form-field appearance="standard" class="grid-item">
         <mat-label>Latitude</mat-label>
-        <input  [(ngModel)]="service.latitude" matInput placeholder="Latitude des Services">
+        <input  [(ngModel)]="service.latitude" matInput placeholder="48.2">
     </mat-form-field>
 </div>
     <div class="oneLine">

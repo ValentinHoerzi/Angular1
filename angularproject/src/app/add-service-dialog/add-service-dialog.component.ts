@@ -16,7 +16,7 @@ import * as moment from 'moment';
 export class AddServiceDialogComponent implements OnInit {
 
     public customDate: Date;
-    public customTime: string;
+    public customTime: string = '12:00';
     public employees: EmployeeRes[] = [];
     public title = 'Dienst anlegen';
     public actionString = 'Anlegen';
@@ -28,7 +28,6 @@ export class AddServiceDialogComponent implements OnInit {
         public datepipe: DatePipe) { }
 
     public ngOnInit(): void {
-        console.log('gotten', this.service);
         this.logicService.getEmployees().subscribe(employees => this.employees = employees);
 
         if (this.service) {
@@ -38,6 +37,7 @@ export class AddServiceDialogComponent implements OnInit {
             }
             this.fillDateAndTime();
         }
+        this.customDate = new Date();
     }
 
     private fillDateAndTime() {
@@ -49,6 +49,9 @@ export class AddServiceDialogComponent implements OnInit {
     public closeDialogAndSave(): void {
         let dateString = this.extractDateString();
         this.service.date = dateString;
+        if (this.service.employeeId == -1) {
+            this.service.employeeId = this.employees[0].id;
+        }
         this.dialogRef.close(this.service);
     }
 
@@ -57,6 +60,9 @@ export class AddServiceDialogComponent implements OnInit {
     }
 
     private extractDateString(): string {
+        if (! this.customTime) {
+            this.customTime = "12:34";
+        }
         let times = this.customTime.split(':'); // todo error handling
         let date1 = this.dateAdd(this.customDate, 'hour', Number(times[0]));
         let date2 = this.dateAdd(date1, 'minute', Number(times[1]));

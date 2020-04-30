@@ -31,8 +31,6 @@ export class LocationMapComponent implements OnInit {
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
-        console.log('value changed', changes);
-
         for (const propName in changes) {
             if (changes.hasOwnProperty(propName)) {
                 switch (propName) {
