@@ -13,7 +13,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ServiceComponentComponent implements OnInit {
 
-    public services: ServiceRes[] = [];
+    @Input() services: ServiceRes[];
 
     public constructor(private _service: LogicService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 

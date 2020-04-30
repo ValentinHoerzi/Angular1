@@ -3,6 +3,8 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 
 import { LogicService } from './logic.service';
 import { MatSidenav, MatDrawer } from '@angular/material/sidenav';
+import { EmployeeRes } from './service-component/employeeRes.model';
+import { ServiceRes } from './service-component/serviceRes.model';
 
 
 @Component({
@@ -16,10 +18,18 @@ export class AppComponent {
     @ViewChild('drawer', {static: false}) 
     public drawer: MatDrawer;
 
-    showService = true;
+    public showService = true;
+    public employees: EmployeeRes[] = [];
+    public services: ServiceRes[] = [];
 
-    constructor() {
 
+    constructor(private logicService: LogicService) {
+        this.logicService.getServices().subscribe(services => {
+            this.services = services;
+        });
+        this.logicService.getEmployees().subscribe(employees => {
+            this.employees = employees;
+        });
     }
 
     public minimizeDrawer() {

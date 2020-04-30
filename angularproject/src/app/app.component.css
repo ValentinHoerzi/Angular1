@@ -39,7 +39,14 @@ app-location-map {
 }
 button {
     height: max-content;
+    margin-top: 10px;
 }
 .back-button {
     position: absolute;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
 }
