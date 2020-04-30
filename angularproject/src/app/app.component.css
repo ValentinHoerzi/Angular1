@@ -50,4 +50,7 @@ button {
     flex-direction: column;
     padding: 10px;
     justify-content: center;
+    position: absolute;
+    z-index: 1;
 }
+

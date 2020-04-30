@@ -1,9 +1,9 @@
 <div class= "background">
     <div class="oneLine">
-        <h1 mat-dialog-title class="header">Dienst anlegen</h1>
+        <h1 mat-dialog-title class="header">{{title}}</h1>
         <div mat-dialog-actions>
          <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
-        <button mat-raised-button color="primary" class="buttnOk" (click)="closeDialogAndSave()" cdkFocusInitial>GUCCI</button>
+        <button mat-raised-button color="primary" class="buttnOk" (click)="closeDialogAndSave()" cdkFocusInitial>{{actionString}}</button>
          <!--[mat-dialog-close]="data"-->
         </div>
 </div>

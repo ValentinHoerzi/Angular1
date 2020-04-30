@@ -13,7 +13,7 @@ mat-card {
 
      padding: 10px;
      background-image: url("../../images/background_sidebar.png");
-     background-repeat: no-repeat, repeat;
+     background-repeat: repeat;
     background-size: 100%;
 
 

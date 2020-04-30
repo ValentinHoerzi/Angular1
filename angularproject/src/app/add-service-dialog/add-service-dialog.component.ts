@@ -18,6 +18,8 @@ export class AddServiceDialogComponent implements OnInit {
     public customDate: Date;
     public customTime: string;
     public employees: EmployeeRes[] = [];
+    public title = 'Dienst anlegen';
+    public actionString = 'Anlegen';
 
     constructor(
         public dialogRef: MatDialogRef<AddServiceDialogComponent>,
@@ -30,6 +32,10 @@ export class AddServiceDialogComponent implements OnInit {
         this.logicService.getEmployees().subscribe(employees => this.employees = employees);
 
         if (this.service) {
+            if (this.service.employeeId != -1) {
+                this.title = "Dienst bearbeiten";
+                this.actionString = "Aktualisieren";
+            }
             this.fillDateAndTime();
         }
     }
