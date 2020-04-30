@@ -43,8 +43,9 @@ export class ServiceComponentComponent implements OnInit {
         let newService = new ServiceDto('', '', '', '', -1);
 
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '500px',
-            data: newService
+            width: '350px',
+            data: newService,
+            backdropClass: 'backdropBackground'
         });
 
         dialogRef.afterClosed().subscribe((service: ServiceDto) => {

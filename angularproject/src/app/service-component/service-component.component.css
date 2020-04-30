@@ -87,7 +87,7 @@ mat-menu {
 } */
 .shadow
 {
-    box-shadow: 0 0px 6px rgba(231,76,60,0.20), 0 0px 6px rgba(231,76,60,0.20)  !important;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.20) !important;
     margin-right: 10px;
 }
 
@@ -101,15 +101,10 @@ mat-menu {
 
 }
 
-.mat-success {
-    background-color: #E74C3C !important;
-    color: #fff;
-    box-shadow: 0 0px 6px rgba(231,76,60,0.20), 0 0px 6px rgba(231,76,60,0.20)  !important;
-
-}
-.mat-success:hover {
-    background-color:rgba(255, 255, 255, 0.0)!important;
-    color: #fff;
-    box-shadow: 0 0px 40px rgba(231,76,60,0.20), 0 0px 40px rgba(231,76,60,0.20)  !important;
-
+.backdropBackground
+{
+    box-shadow: 0 0px 5px rgba(255,255,255,0.20) !important;
+    filter: blur(2px);
+   
+          -webkit-filter: blur(2px);
 }

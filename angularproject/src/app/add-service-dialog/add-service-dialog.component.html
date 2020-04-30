@@ -3,32 +3,34 @@
         <h1 mat-dialog-title class="header">Dienst anlegen</h1>
         <div mat-dialog-actions>
          <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
-        <button class="buttnOk" (click)="closeDialogAndSave()" cdkFocusInitial>GUCCI</button>
+        <button mat-raised-button color="primary" class="buttnOk" (click)="closeDialogAndSave()" cdkFocusInitial>GUCCI</button>
          <!--[mat-dialog-close]="data"-->
         </div>
 </div>
 <div class="grid-container">
 <div mat-dialog-content >
     <!-- Name -->
-    <div class="oneLine">
-    <mat-form-field appearance="standard"  class="grid-item">
+   
+    <mat-form-field appearance="standard"  class="grid-itemFull" id="fullWidth">
         <mat-label>Name</mat-label>
         <input [(ngModel)]="service.name" matInput placeholder="Name des Services">
     </mat-form-field>
 
+    <div  class="oneLine" >
     <!-- Long -->
-    <mat-form-field appearance="standard" class="grid-item">
+    <mat-form-field  appearance="standard" class="grid-item">
         <mat-label>Longitude</mat-label>
         <input [(ngModel)]="service.longitude" matInput placeholder="Longitude des Services">
     </mat-form-field>
-    </div>
-    <div class="oneLine">
+    
+    
     <!-- Lat -->
     <mat-form-field appearance="standard" class="grid-item">
         <mat-label>Latitude</mat-label>
         <input  [(ngModel)]="service.latitude" matInput placeholder="Latitude des Services">
     </mat-form-field>
-
+</div>
+    <div class="oneLine">
     <!-- Date -->
     <mat-form-field class="grid-item">
         <mat-label>Choose a date</mat-label>
@@ -36,8 +38,6 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-</div>
-<div class="oneLine">
 
     <!-- Time -->
     <mat-form-field class="grid-item">
@@ -46,9 +46,12 @@
             <ngx-material-timepicker #fullTime></ngx-material-timepicker>
        </div>
     </mat-form-field>    
+</div>
+
+  
 
     <!-- Employee -->
-    <mat-form-field class="grid-item">
+    <mat-form-field class="grid-item" id="fullWidth">
         <mat-label>Mitarbeiter</mat-label>
         <mat-select [(value)]="service.employeeId">
             <mat-option *ngFor="let employee of employees" [value]="employee.id">
@@ -56,7 +59,7 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
-</div>
+
 </div>
 </div>
 
