@@ -28,16 +28,6 @@ export class LocationMapComponent implements OnInit {
 
     public ngOnInit(): void {
         this.displayMap();
-
-        // forkJoin(
-        //     this.logicService.getServices(),
-        //     this.logicService.getEmployees()
-        // ).subscribe(([services, employees]) => {
-        //     this.services = services;
-        //     this.employees = employees;
-
-
-        // });
     }
 
     public ngOnChanges(changes: SimpleChanges): void {

@@ -1,0 +1,55 @@
+<div class="card-layout">
+    <div class="service-header">
+
+        <h2>
+            <span [matBadge]="services.length" matBadgeOverlap="false" matBadgeColor="accent">{{employee.name}}</span>
+        </h2>
+
+        <!-- Services -->
+        <ng-container *ngFor="let service of services">
+            <app-simple-service [service]="service"></app-simple-service>
+            <!-- <div class="way-icon">
+                <mat-icon>more_vert</mat-icon>
+            </div> -->
+            <div class="verticalLine"></div>
+        </ng-container>
+
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>edit</mat-icon>
+                <span>Bearbeiten</span>
+            </button>
+
+            <button mat-menu-item>
+                <mat-icon>delete_outline</mat-icon>
+                <span>Löschen</span>
+            </button>
+
+        </mat-menu>
+    </div>
+
+    <div class="content">
+        <!-- Address container with icon -->
+        <div class="container">
+            <!-- Marker Icon -->
+            <!-- <mat-icon>room</mat-icon> -->
+
+            <!-- <p> {{ address }} </p> -->
+            <p>Fliederstraße 17, 4623 Gunskirchen</p>
+        </div>
+
+        <div class="container">
+            <mat-icon>event</mat-icon>
+            <div>
+                <p>{{employee.latitude}}</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <mat-icon>supervisor_account</mat-icon>
+            <p>{{employee.longitude}}</p>
+        </div>
+
+    </div>
+</div>

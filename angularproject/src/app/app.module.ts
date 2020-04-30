@@ -27,7 +27,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DisplayServiceComponent } from './display-service/display-service.component'; 
 import {MatBadgeModule} from '@angular/material/badge';
-import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
+import { SimpleServiceComponent } from './simple-service/simple-service.component'; 
 
 @NgModule({
     declarations: [
@@ -35,7 +37,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
         ServiceComponentComponent,
         LocationMapComponent,
         AddServiceDialogComponent,
-        DisplayServiceComponent
+        DisplayServiceComponent,
+        DisplayEmployeeComponent,
+        SimpleServiceComponent
     ],
     imports: [
         BrowserModule,

@@ -8,8 +8,16 @@
                     <mat-icon>keyboard_backspace</mat-icon>
                 </button>
             </div>
-            <app-service-component [services]="services" *ngIf="showService" (serviceChanged)="serviceChanged($event)"></app-service-component>
-            <p *ngIf="!showService">Sven</p>
+            <app-service-component [services]="services" *ngIf="showService" (serviceChanged)="serviceChanged($event)">
+            </app-service-component>
+            <div class="header-margin" *ngIf="!showService">
+
+                <mat-card *ngFor="let employee of employees">
+                    <app-display-employee [employee]="employee">
+                    </app-display-employee>
+                </mat-card>
+               
+            </div>
 
         </mat-drawer>
         <mat-drawer-content>
