@@ -7,7 +7,6 @@ $my-app-accent: mat-palette($mat-amber, A200, A100, A400);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
 
 @include angular-material-theme($my-app-theme);
-
 #map {
     height: 100%;
     width: 100%;
@@ -30,6 +29,7 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    
 }
 
 .mat-button-focus-overlay {
@@ -48,4 +48,14 @@ body {
 ::ng-deep.mat-form-field-ripple {
     /*change color of underline when focused*/
     background-color: green !important;
+}
+
+.backdropBackground
+{   
+    
+    backdrop-filter: blur(1.3px);
+
+          background-color:rgba(255, 255, 255, 0.03);
+
+
 }
