@@ -10,7 +10,7 @@
 </div>
 
 
-<mat-card *ngFor="let service of services">
+<mat-card *ngFor="let service of services" class="shadow">
     <app-display-service [service]="service" (onDeleted)="deleteService($event)" (onEdited)="editService($event)">
     </app-display-service>
 </mat-card>
