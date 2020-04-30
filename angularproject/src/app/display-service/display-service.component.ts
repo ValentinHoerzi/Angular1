@@ -19,7 +19,7 @@ export class DisplayServiceComponent implements OnInit {
 
     public address: string;
     public employeeName: string;
-    public markerIconColor: string = '#0000FF'; // #0000FF services
+    public markerIconColor: string = '#E74C3C'; // #0000FF services
 
     constructor(private _service: LogicService, public dialog: MatDialog,
         private geolocationService: GeolocationService) { }
