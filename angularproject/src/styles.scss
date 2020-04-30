@@ -49,3 +49,13 @@ body {
     /*change color of underline when focused*/
     background-color: green !important;
 }
+
+.backdropBackground
+{   
+    
+    backdrop-filter: blur(1.3px);
+
+          background-color:rgba(255, 255, 255, 0.03);
+
+
+}

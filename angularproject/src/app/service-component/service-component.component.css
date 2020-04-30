@@ -101,3 +101,10 @@ mat-menu {
 
 }
 
+.backdropBackground
+{
+    box-shadow: 0 0px 5px rgba(255,255,255,0.20) !important;
+    filter: blur(2px);
+   
+          -webkit-filter: blur(2px);
+}
