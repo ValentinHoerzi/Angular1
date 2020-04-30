@@ -4,6 +4,7 @@ import { ServiceRes } from './serviceRes.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddServiceDialogComponent } from '../add-service-dialog/add-service-dialog.component';
 import { ServiceDto } from './serviceDto.model';
+import {MatSnackBar} from '@angular/material/snack-bar'; 
 
 @Component({
     selector: 'app-service-component',
@@ -14,13 +15,16 @@ export class ServiceComponentComponent implements OnInit {
 
     public services: ServiceRes[] = [];
 
-    public constructor(private _service: LogicService, public dialog: MatDialog) { }
+    public constructor(private _service: LogicService, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
     public ngOnInit(): void {
         this._service.getServices().subscribe(services => {
             this.services = services;
         });
     }
+
+    
+
 
     public editService(clickedService: ServiceRes) {
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
@@ -30,8 +34,8 @@ export class ServiceComponentComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe((service: ServiceDto) => {
             if (!service) return;
-
             console.log('editedService', service);
+            this._snackBar.open("Dienst wurde bearbeitet!");
             this._service.updateService(clickedService.id.toString(), service).subscribe(serviceResult => {
                 console.log('gotten into it');
                 let replaceId = this.services.findIndex(s => s.id == serviceResult.id);
@@ -46,6 +50,7 @@ export class ServiceComponentComponent implements OnInit {
         this._service.deleteService(service.id.toString()).subscribe(deletedServiceName => {
             // dunnot why this is only a name
             console.log('deletedName', deletedServiceName);
+            this._snackBar.open("Dienst wurde gelöscht!");
             let index = this.services.findIndex(s => s === service);
             this.services.splice(index, 1);
             console.log('index', index);
@@ -62,9 +67,8 @@ export class ServiceComponentComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe((service: ServiceDto) => {
             if (!service) return;
-
             this._service.addService(service).subscribe(serviceRes => this.services.push(serviceRes));
+            this._snackBar.open("Dienst wurde angelegt!");
         });
     }
-
 }
