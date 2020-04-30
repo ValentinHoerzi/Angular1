@@ -1,0 +1,19 @@
+<div class="sideBar">
+
+    <mat-card class="header-card">
+        <div class="header">
+            <h1> Dienste </h1>
+            <button mat-raised-button color="primary" (click)="createNewService()"> Dienst hinzufügen</button>
+        </div>
+    </mat-card>
+
+    <div class="dienste">
+
+        <mat-card *ngFor="let service of services" class="shadow">
+            <app-display-service [service]="service" (onDeleted)="deleteService($event)"
+                (onEdited)="editService($event)">
+            </app-display-service>
+        </mat-card>
+
+    </div>
+</div>

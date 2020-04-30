@@ -1,0 +1,36 @@
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h2 {
+    margin-bottom: 0;
+}
+mat-menu {
+    display: none;
+}
+.address-container {
+    display: flex;
+}
+
+svg {
+    height: 24px;
+    width: 24px;
+    margin-right: 5px;
+}
+mat-icon {
+    margin-right: 5px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.content {
+    margin-top: 16px;
+}
+p {
+    margin: 0;
+}
+
+

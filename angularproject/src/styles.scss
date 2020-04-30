@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-red);
+$my-app-accent: mat-palette($mat-amber, A200, A100, A400);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
+
+@include angular-material-theme($my-app-theme);
+#map {
+    height: 100%;
+    width: 100%;
+    /* Center se map  */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    
+}
+
+.mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: green !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: green !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: green !important;
+}
+
+
+/* Marker tweaks */
+.mapboxgl-popup-close-button {
+    display: none;
+  }
+  
+  .mapboxgl-popup-content {
+    font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+    padding: 0;
+    width: 180px;
+  }
+  
+  .mapboxgl-popup-content-wrapper {
+    padding: 1%;
+  }
+  
+  .mapboxgl-popup-content h3 {
+    background: #E74C3C;
+    color: #fff;
+    margin: 0;
+    display: block;
+    padding: 10px;
+    border-radius: 3px 3px 0 0;
+    font-weight: 700;
+    margin-top: -15px;
+  }
+
+  .mapboxgl-popup-content h2 {
+    background: #0000FF;
+    color: #fff;
+    margin: 0;
+    display: block;
+    padding: 10px;
+    border-radius: 3px 3px 0 0;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: -15px;
+  }
+  
+  .mapboxgl-popup-content h4 {
+    margin: 0;
+    display: block;
+    padding: 10px;
+    font-weight: 400;
+  }
+  
+  .mapboxgl-popup-content div {
+    padding: 10px;
+  }
+  
+  .mapboxgl-container .leaflet-marker-icon {
+    cursor: pointer;
+  }
+  
+  .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+    margin-top: 15px;
+  }
+  
+  .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+    border-bottom-color: #E74C3C;
+  }
+  
+.backdropBackground
+{   
+    
+    backdrop-filter: blur(1.3px);
+
+          background-color:rgba(255, 255, 255, 0.03);
+
+
+}

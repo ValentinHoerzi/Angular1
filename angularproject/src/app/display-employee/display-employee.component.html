@@ -1,0 +1,18 @@
+<div class="card-layout">
+    <div class="service-header">
+
+        <h2>
+            <span [matBadge]="services.length" matBadgeOverlap="false" matBadgeColor="accent">{{employee.name}}</span>
+        </h2>
+
+        <!-- Services -->
+        <ng-container *ngFor="let service of services">
+            <app-simple-service [service]="service"></app-simple-service>
+            <!-- <div class="way-icon">
+                <mat-icon>more_vert</mat-icon>
+            </div> -->
+            <div class="verticalLine"></div>
+        </ng-container>
+
+    </div>
+</div>

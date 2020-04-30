@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ServiceRes } from './service-component/serviceRes.model';
 import { Observable } from 'rxjs';
 import { ServiceDto } from './service-component/serviceDto.model';
-import { ServerResponse } from 'http';
+// import { ServerResponse } from 'http';
 import { EmployeeRes } from './service-component/employeeRes.model';
 import { EmployeeDto } from './service-component/employeeDto.model';
 
@@ -35,7 +35,7 @@ export class LogicService {
   }
 
   deleteService(id: string): Observable<string> {
-    return this.http.delete<string>(this.SERVICE_MICROSERVICE_URL + id);
+    return this.http.delete<string>(this.SERVICE_MICROSERVICE_URL + id, {responseType: 'text' as 'json'});
   }
 
   getEmployees(): Observable<EmployeeRes[]> {
@@ -55,6 +55,6 @@ export class LogicService {
   }
 
   deleteEmployee(id: string): Observable<string> {
-    return this.http.delete<string>(this.EMPLOYEE_MICROSERVICE_URL + id);
+    return this.http.delete<string>(this.EMPLOYEE_MICROSERVICE_URL + id, {responseType: 'text' as 'json'});
   }
 }

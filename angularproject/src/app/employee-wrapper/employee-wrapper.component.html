@@ -1,0 +1,16 @@
+
+<div class="sideBar">
+    <div class="dienste">
+<mat-card class="header-card">
+    <div class="header">
+        <h1> Mitarbeiter </h1>
+        <!-- <button mat-raised-button color="primary" (click)="createNewEmployee()"> ADD SERVICE</button> -->
+    </div>
+</mat-card>
+</div>
+
+
+<mat-card *ngFor="let employee of employees" class="shadow">
+    <app-display-employee [employee]="employee" (onDeleted)="deleteEmployee($event)" (onEdited)="editEmployee($event)">
+    </app-display-employee>
+</mat-card>
