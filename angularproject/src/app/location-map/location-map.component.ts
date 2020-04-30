@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 import { LogicService } from '../logic.service';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
@@ -17,29 +17,52 @@ export class LocationMapComponent implements OnInit {
 
     public map: mapboxgl.Map;
 
-    public employees: EmployeeRes[] = [];
-    public services: ServiceRes[] = [];
+    @Input()
+    public employees: EmployeeRes[];
+    @Input()
+    public services: ServiceRes[];
+
+    private employeeMarkers: mapboxgl.Marker[] = [];
+    private serviceMarkers: mapboxgl.Marker[] = [];
+
 
     public ngOnInit(): void {
         this.displayMap();
 
-        forkJoin(
-            this.logicService.getServices(),
-            this.logicService.getEmployees()
-        ).subscribe(([services, employees]) => {
-            this.services = services;
-            this.employees = employees;
+        // forkJoin(
+        //     this.logicService.getServices(),
+        //     this.logicService.getEmployees()
+        // ).subscribe(([services, employees]) => {
+        //     this.services = services;
+        //     this.employees = employees;
 
-            let serviceMarkers = this.createMarker<ServiceRes>(this.services, '#E74C3C', this.createServiceMarkerPopup);
-            let employeeMarkers = this.createMarker<EmployeeRes>(this.employees, '#0000FF', this.createEmployeeMarkerPopup);
 
-            let markers = serviceMarkers.concat(employeeMarkers);
-            let bounds = new mapboxgl.LngLatBounds();
+        // });
+    }
 
-            markers.forEach(marker => marker.addTo(this.map));
-            markers.forEach(marker => bounds.extend(marker.getLngLat()));
-            this.map.fitBounds(bounds, { padding: 100 });
-        });
+    public ngOnChanges(changes: SimpleChanges): void {
+        console.log('value changed', changes);
+
+        for (const propName in changes) {
+            if (changes.hasOwnProperty(propName)) {
+                switch (propName) {
+                    case 'employees': {
+                        let employeeMarkers = this.createMarker<EmployeeRes>(this.employees, '#0000FF', this.createEmployeeMarkerPopup);
+                        this.employeeMarkers.forEach(marker => marker.remove());
+                        this.employeeMarkers = [].concat(employeeMarkers);
+                        this.employeeMarkers.forEach(marker => marker.addTo(this.map));
+                        break;
+                    }
+                    case 'services': {
+                        let serviceMarkers = this.createMarker<ServiceRes>(this.services, '#E74C3C', this.createServiceMarkerPopup);
+                        this.serviceMarkers.forEach(marker => marker.remove());
+                        this.serviceMarkers = [].concat(serviceMarkers);
+                        this.serviceMarkers.forEach(marker => marker.addTo(this.map));
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     private createServiceMarkerPopup(x: ServiceRes): mapboxgl.Popup {

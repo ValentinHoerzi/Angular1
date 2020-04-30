@@ -8,7 +8,7 @@
                     <mat-icon>keyboard_backspace</mat-icon>
                 </button>
             </div>
-            <app-service-component [services]="services" *ngIf="showService"></app-service-component>
+            <app-service-component [services]="services" *ngIf="showService" (serviceChanged)="serviceChanged($event)"></app-service-component>
             <p *ngIf="!showService">Sven</p>
 
         </mat-drawer>
@@ -20,7 +20,7 @@
                     <button mat-raised-button (click)="showEmployees()">Employees</button>
                 </div>
 
-                <app-location-map></app-location-map>
+                <app-location-map [employees]="employees" [services]="services"></app-location-map>
             </div>
 
         </mat-drawer-content>

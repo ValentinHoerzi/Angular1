@@ -32,6 +32,10 @@ export class AppComponent {
         });
     }
 
+    public serviceChanged(event: ServiceRes[]) {
+        this.services = event;
+    }
+
     public minimizeDrawer() {
         this.drawer.close();
     }
