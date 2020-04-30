@@ -5,7 +5,7 @@
 }
 
 .left-side {
-    padding-left: 10px;
+   
     padding-right: 10px;
     overflow: auto;
     background-color: transparent;
@@ -14,6 +14,8 @@
     width: 100%;
     height: 100%;
     max-width: 30%;
+
+    box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.35) !important;
 }
 
 .right-side {
@@ -29,3 +31,6 @@
 .left-side {
     -ms-overflow-style: none;
 }
+
+
+

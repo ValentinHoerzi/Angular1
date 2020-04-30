@@ -9,6 +9,7 @@ import { LogicService } from './logic.service';
 import { LocationMapComponent } from './location-map/location-map.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,13 +25,16 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatSelectModule} from '@angular/material/select'; 
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DisplayServiceComponent } from './display-service/display-service.component'; 
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
     declarations: [
         AppComponent,
         ServiceComponentComponent,
         LocationMapComponent,
-        AddServiceDialogComponent
+        AddServiceDialogComponent,
+        DisplayServiceComponent
     ],
     imports: [
         BrowserModule,
@@ -45,6 +49,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         NgxMaterialTimepickerModule, MatSelectModule,
         MatMenuModule,
         MatSnackBarModule,
+        MatBadgeModule,
     ],
     providers: [
         LogicService

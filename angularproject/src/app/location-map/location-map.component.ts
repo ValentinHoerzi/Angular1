@@ -30,8 +30,8 @@ export class LocationMapComponent implements OnInit {
             this.services = services;
             this.employees = employees;
 
-            let serviceMarkers = this.createMarker<ServiceRes>(this.services, '#0000FF', this.createServiceMarkerPopup);
-            let employeeMarkers = this.createMarker<EmployeeRes>(this.employees, '#8B0000', this.createEmployeeMarkerPopup);
+            let serviceMarkers = this.createMarker<ServiceRes>(this.services, '#E74C3C', this.createServiceMarkerPopup);
+            let employeeMarkers = this.createMarker<EmployeeRes>(this.employees, '#0000FF', this.createEmployeeMarkerPopup);
 
             let markers = serviceMarkers.concat(employeeMarkers);
             let bounds = new mapboxgl.LngLatBounds();

@@ -23,45 +23,23 @@ export class ServiceComponentComponent implements OnInit {
         });
     }
 
-    
-
-
-    public editService(clickedService: ServiceRes) {
-        const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '250px',
-            data: { ...clickedService }
-        });
-
-        dialogRef.afterClosed().subscribe((service: ServiceDto) => {
-            if (!service) return;
-            console.log('editedService', service);
-            this._snackBar.open("Dienst wurde bearbeitet!");
-            this._service.updateService(clickedService.id.toString(), service).subscribe(serviceResult => {
-                console.log('gotten into it');
-                let replaceId = this.services.findIndex(s => s.id == serviceResult.id);
-                this.services[replaceId] = serviceResult;
-            });
-            // this._service.addService(service).subscribe(serviceRes => this.services.push(serviceRes));
-        });
+    public deleteService(service: ServiceRes) {
+        let index = this.services.findIndex(s => s === service);
+        this.services.splice(index, 1);        
+        this._snackBar.open("Dienst wurde gelöscht!");
     }
 
-    public deleteService(service: ServiceRes) {
-        console.log('method', service);
-        this._service.deleteService(service.id.toString()).subscribe(deletedServiceName => {
-            // dunnot why this is only a name
-            console.log('deletedName', deletedServiceName);
-            this._snackBar.open("Dienst wurde gelöscht!");
-            let index = this.services.findIndex(s => s === service);
-            this.services.splice(index, 1);
-            console.log('index', index);
-        });
+    public editService(service: ServiceRes) {
+        let replaceId = this.services.findIndex(s => s.id == service.id);
+        this.services[replaceId] = service;
+        this._snackBar.open("Dienst wurde bearbeitet!");
     }
 
     public createNewService() {
         let newService = new ServiceDto('', '', '', '', -1);
 
         const dialogRef = this.dialog.open(AddServiceDialogComponent, {
-            width: '250px',
+            width: '500px',
             data: newService
         });
 
