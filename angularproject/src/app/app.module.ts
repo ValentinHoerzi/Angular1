@@ -31,6 +31,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
 import { SimpleServiceComponent } from './simple-service/simple-service.component';
 import { EmployeeWrapperComponent } from './employee-wrapper/employee-wrapper.component'; 
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { EmployeeWrapperComponent } from './employee-wrapper/employee-wrapper.co
         DisplayServiceComponent,
         DisplayEmployeeComponent,
         SimpleServiceComponent,
-        EmployeeWrapperComponent
+        EmployeeWrapperComponent,
+        ConfirmDialogComponent,
     ],
     imports: [
         BrowserModule,

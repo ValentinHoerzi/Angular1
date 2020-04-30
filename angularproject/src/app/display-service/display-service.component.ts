@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddServiceDialogComponent } from '../add-service-dialog/add-service-dialog.component';
 import { ServiceDto } from '../service-component/serviceDto.model';
 import { GeolocationService } from '../geolocation.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector: 'app-display-service',
@@ -54,9 +55,17 @@ export class DisplayServiceComponent implements OnInit {
 
     public deleteService(service: ServiceRes) {
         console.log('method', service);
-        this._service.deleteService(service.id.toString()).subscribe(deletedServiceName => {
-            this.onDeleted.emit(service);
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            width: '350px',
         });
+        dialogRef.afterClosed().subscribe((deleted: string) => {
+            console.log('Dialog closed. Result: ' + deleted);
+            if (deleted=='true') { 
+                this._service.deleteService(service.id.toString()).subscribe(deletedServiceName => {
+                this.onDeleted.emit(service);
+            });}
+        });
+       
     }
 
 }
