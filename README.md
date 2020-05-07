@@ -12,7 +12,7 @@ java -jar ServiceMicroservice-0.1.jar
 ```
 
 ## Datenbank befüllen
-Datenbank mit `database_script.sql` befüllen.
+Datenbank mit `Backend/database_script.sql` in PhpMyAdmin befüllen.
 
 ## Angular starten
 Zum `Angular1\angularproject` wechseln
