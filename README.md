@@ -17,3 +17,6 @@ Datenbank mit `Backend/database_script.sql` in PhpMyAdmin befüllen.
 ## Angular starten
 Zum `Angular1\angularproject` wechseln
 `npm install` ausführen und danach `ng serve`. Browser zu `http://localhost:4200/` öffnen
+## Arbeitsaufteilung
+siehe Link:
+https://docs.google.com/spreadsheets/d/1dx6J882QnHM60_hkLNZYrefkOLn7JaGQ96s9Cx39Vx0/edit?usp=sharing
