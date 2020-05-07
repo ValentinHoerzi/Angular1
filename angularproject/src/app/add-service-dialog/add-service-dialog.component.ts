@@ -6,6 +6,7 @@ import { EmployeeRes } from '../service-component/employeeRes.model';
 import { DatePipe } from '@angular/common';
 
 import * as moment from 'moment';
+import { GeolocationService } from '../geolocation.service';
 
 @Component({
     selector: 'app-add-service-dialog',
@@ -20,12 +21,14 @@ export class AddServiceDialogComponent implements OnInit {
     public employees: EmployeeRes[] = [];
     public title = 'Dienst anlegen';
     public actionString = 'Anlegen';
+    public address = '';
 
     constructor(
         public dialogRef: MatDialogRef<AddServiceDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public service: ServiceDto,
         private logicService: LogicService,
-        public datepipe: DatePipe) { }
+        public datepipe: DatePipe,
+        private geoService: GeolocationService) { }
 
     public ngOnInit(): void {
         this.logicService.getEmployees().subscribe(employees => this.employees = employees);
@@ -34,6 +37,10 @@ export class AddServiceDialogComponent implements OnInit {
             if (this.service.employeeId != -1) {
                 this.title = "Dienst bearbeiten";
                 this.actionString = "Aktualisieren";
+
+                this.geoService.getAddress(this.service.latitude, this.service.longitude).subscribe(data => {
+                    this.address = this.geoService.convertToAddress(data);
+                });
             }
             this.fillDateAndTime();
         }
@@ -52,7 +59,16 @@ export class AddServiceDialogComponent implements OnInit {
         if (this.service.employeeId == -1) {
             this.service.employeeId = this.employees[0].id;
         }
-        this.dialogRef.close(this.service);
+                
+        this.geoService.getLatLng(this.address).subscribe(data => {
+            console.log('data#', data);
+            let latLng = this.geoService.convertToLatLng(data);
+            
+            this.service.latitude = latLng.Latitude;
+            this.service.longitude = latLng.Longitude;
+
+            this.dialogRef.close(this.service);
+        });
     }
 
     public onNoClick(): void {
@@ -63,6 +79,7 @@ export class AddServiceDialogComponent implements OnInit {
         if (! this.customTime) {
             this.customTime = "12:34";
         }
+
         let times = this.customTime.split(':'); // todo error handling
         let date1 = this.dateAdd(this.customDate, 'hour', Number(times[0]));
         let date2 = this.dateAdd(date1, 'minute', Number(times[1]));
